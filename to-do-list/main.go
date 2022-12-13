@@ -31,7 +31,7 @@ type Task struct {
 
 // CREATE storage new inputs from the user and create new task.
 func Create(t Task) (e error) {
-	db, err := sql.Open("mysql", "root:Pepperonipizza123.@tcp(127.0.0.1:3306)/")
+	db, err := sql.Open("mysql", "root:<yourpassword>.@tcp(127.0.0.1:3306)/")
 	checkErr(err)
 
 	defer db.Close()
