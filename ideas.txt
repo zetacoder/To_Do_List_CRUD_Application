@@ -1,0 +1,74 @@
+TO DO LIST CLI by Zetacoder. From scratch.
+
+This document is created in order to organize the ideas before the creation of the proyect.
+Im going to build a clasic TO DO LIST in CRUD model with a CLI from scratch.
+
+FEATURES OF THE APP:
+-Will be managed using CLI with the users inputs.
+-Will be connected to an MySQL database.
+-Will contain a MENU with options.
+-You will be able to: 
+      1) CREATE new tasks that will be storaged in MySQL database.
+      2) READ the task already storaged in the db and show it in screen.
+      3) UPDATE the tasks and modify it. 
+      4) DELETE the task marked as completed.
+      5) DELETE the task you not longer want to do.
+      6) EXIT the program.
+-The program will be interactive, returning messages in order to enhanced tu user experience.
+
+
+PROJECT STRUCTURE:
+to-do-list
+      -main.go ->
+      -mod.go -> modules to integrate the packages dependency
+      -sum.go
+      -crud -> contains the CREATE, READ, UPDATE and DELETE funcs.
+      -ideas.txt
+      -to-do-list.exec -> executes the programm.
+
+PACKAGES:
+	_ "github.com/go-sql-driver/mysql" -> A MySQL-Driver for Go's database/sql package
+	"database/sql" -> Contains funcs to open, prepare, query, manipulate the database and more.
+	"fmt"
+      "time"
+
+DATA STRUCTURES:
+-Every TASK have the following structure: 
+      1) ID of the task --> int
+      2) Name of the task --> string
+      3) Description of the task --> string
+      4) Responsable of the task --> string
+      5) State of completion --> bool
+
+-MySQL Database:
+      Name of database: to_do_list
+            Name of table: tasks
+                  -ID -> TINYINT primary key INCREMENTAL NOT NULL
+                  -NAME_TASK -> TINYTEXT NOT NULL
+                  -DESCRIPTION -> TINYTEXT NOT NULL
+                  -RESPONSABLE -> TINYTEXT NOT NULL
+                  -COMPLETED -> BOOL (0 for false, 1 for true.)
+
+
+LOGICAL STEPS OF THE APP:
+1) Create the to_do_list DATABASE on MYSQL. 
+2) Connect to DATABASE
+
+3) Salute the user and show the MENU and INSTRUCTIONS.
+*show instructions
+
+      (1) CREATE task to do
+      (2) READ the tasks
+      (3) UPDATE the task
+      (4) MARK the task as completed.
+      (5) DELETE task.
+      (6) Exit the programm.
+
+4) Scan the answer and executes the func dependening on the option.
+
+5) Return the result on screen of the func. Repeat main menu (step 3).
+
+6) If option selected 6, exit programm.
+
+
+
