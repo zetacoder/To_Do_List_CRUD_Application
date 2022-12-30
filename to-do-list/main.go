@@ -170,7 +170,7 @@ What do you want to do:
 		// Create new task
 		case 1:
 			fmt.Println("Name of the task:")
-			fmt.Scanln()
+			
 			if scanner.Scan() {
 				newTask.Name_task = scanner.Text()
 			}
@@ -208,7 +208,7 @@ What do you want to do:
 			}
 		case 3:
 			fmt.Println("Choose the ID of the task to modify:")
-			fmt.Scanln()
+			
 			fmt.Scanln(&newTask.ID)
 			fmt.Println("Enter new task name:")
 			if scanner.Scan() {
@@ -232,7 +232,7 @@ What do you want to do:
 			}
 		case 4:
 			fmt.Println("Choose the ID of the task you completed:")
-			fmt.Scanln()
+			
 			fmt.Scanln(&newTask.ID)
 			Delete(newTask) // Mark as completed
 
@@ -240,7 +240,7 @@ What do you want to do:
 			time.Sleep(1 * time.Second)
 		case 5:
 			fmt.Println("Choose the ID of the task you want to remove:")
-			fmt.Scanln()
+			
 			fmt.Scanln(&newTask.ID)
 			Delete(newTask) // task deleted
 
