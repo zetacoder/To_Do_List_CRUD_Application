@@ -159,97 +159,91 @@ What do you want to do:
 (6) EXIT APP.
 `
 
-	// Show menu and depending of the option, execute the CRUD funcs.
-	for selected_option != 6 {
+// Show menu and depending of the option, execute the CRUD funcs.
+for selected_option != 6 {
 		fmt.Println("")
 		fmt.Println(menu)
 		fmt.Scan(&selected_option)
 		scanner := bufio.NewScanner(os.Stdin)
 
-		switch selected_option {
-		// Create new task
-		case 1:
-			fmt.Println("Name of the task:")
-			
+switch selected_option {
+// Create new task
+	case 1:
+		fmt.Println("Name of the task:")
 			if scanner.Scan() {
 				newTask.Name_task = scanner.Text()
 			}
-			fmt.Println("")
+		fmt.Println("")
 
-			fmt.Println("Description:")
+		fmt.Println("Description:")
 			if scanner.Scan() {
 				newTask.Description = scanner.Text()
 			}
 
-			fmt.Println("Person responsable:")
-			time.Sleep(1 * time.Second)
+		fmt.Println("Person responsable:")
+		time.Sleep(1 * time.Second)
 			if scanner.Scan() {
 				newTask.Responsable = scanner.Text()
 			}
 
-			Create(newTask)
-			time.Sleep(1 * time.Second)
-			fmt.Println("TASK ADDED SUCCESFULLY!")
-			time.Sleep(1 * time.Second)
-		// Show all tasks
-		case 2:
-			tasks, err := Read()
-			if err != nil {
-				fmt.Printf("Cant get tasks: %v", err)
-			} else {
-				for _, task := range tasks {
-					fmt.Println("====================")
-					fmt.Printf("ID: %d\n", task.ID)
-					fmt.Printf("Name of task: %s\n", task.Name_task)
-					fmt.Printf("Description: %s\n", task.Description)
-					fmt.Printf("Responsable: %s\n", task.Responsable)
-					fmt.Printf("Completed: %v\n", task.Completed)
-				}
+		Create(newTask)
+		time.Sleep(1 * time.Second)
+		fmt.Println("TASK ADDED SUCCESFULLY!")
+		time.Sleep(1 * time.Second)
+// Show all tasks
+	case 2:
+		tasks, err := Read()
+		if err != nil {
+			fmt.Printf("Cant get tasks: %v", err)
+		} else {
+			for _, task := range tasks {
+				fmt.Println("====================")
+				fmt.Printf("ID: %d\n", task.ID)
+				fmt.Printf("Name of task: %s\n", task.Name_task)
+				fmt.Printf("Description: %s\n", task.Description)
+				fmt.Printf("Responsable: %s\n", task.Responsable)
+				fmt.Printf("Completed: %v\n", task.Completed)
 			}
-		case 3:
-			fmt.Println("Choose the ID of the task to modify:")
-			
-			fmt.Scanln(&newTask.ID)
-			fmt.Println("Enter new task name:")
-			if scanner.Scan() {
-				newTask.Name_task = scanner.Text()
-			}
-			fmt.Println("Enter new description:")
-			if scanner.Scan() {
-				newTask.Description = scanner.Text()
-			}
-			fmt.Println("Enter the new responsable of the task:")
-			if scanner.Scan() {
-				newTask.Responsable = scanner.Text()
-			}
-			err := Update(newTask)
-			if err != nil {
-				fmt.Printf("Error updating: %v", err)
-			} else {
-				time.Sleep(1 * time.Second)
-				fmt.Println("TASK UPDATED SUCCESFULLY")
-				time.Sleep(1 * time.Second)
-			}
-		case 4:
-			fmt.Println("Choose the ID of the task you completed:")
-			
-			fmt.Scanln(&newTask.ID)
-			Delete(newTask) // Mark as completed
-
-			fmt.Printf("Congratulations! Task %d marked as completed", newTask.ID)
+		}
+	case 3:
+		fmt.Println("Choose the ID of the task to modify:")
+		fmt.Scanln(&newTask.ID)
+		fmt.Println("Enter new task name:")
+		if scanner.Scan() {
+			newTask.Name_task = scanner.Text()
+		}
+		fmt.Println("Enter new description:")
+		if scanner.Scan() {
+			newTask.Description = scanner.Text()
+		}
+		fmt.Println("Enter the new responsable of the task:")
+		if scanner.Scan() {
+			newTask.Responsable = scanner.Text()
+		}
+		err := Update(newTask)
+		if err != nil {
+			fmt.Printf("Error updating: %v", err)
+		} else {
 			time.Sleep(1 * time.Second)
-		case 5:
-			fmt.Println("Choose the ID of the task you want to remove:")
-			
-			fmt.Scanln(&newTask.ID)
-			Delete(newTask) // task deleted
-
-			fmt.Println("Task removed from the list.")
+			fmt.Println("TASK UPDATED SUCCESFULLY")
 			time.Sleep(1 * time.Second)
-		case 6:
-			fmt.Println("See ya!")
-			time.Sleep(1 * time.Second)
-			os.Exit(0)
+		}
+	case 4:
+		fmt.Println("Choose the ID of the task you completed:")
+		fmt.Scanln(&newTask.ID)
+		Delete(newTask) // Mark as completed
+		fmt.Printf("Congratulations! Task %d marked as completed", newTask.ID)
+		time.Sleep(1 * time.Second)
+	case 5:
+		fmt.Println("Choose the ID of the task you want to remove:")
+		fmt.Scanln(&newTask.ID)
+		Delete(newTask) // task deleted
+		fmt.Println("Task removed from the list.")
+		time.Sleep(1 * time.Second)
+	case 6:
+		fmt.Println("See ya!")
+		time.Sleep(1 * time.Second)
+		os.Exit(0)
 		}
 	}
 }
