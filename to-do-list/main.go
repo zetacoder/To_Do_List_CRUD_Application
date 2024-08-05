@@ -31,7 +31,7 @@ type Task struct {
 
 // CREATE storage new inputs from the user and create new task.
 func Create(t Task) (e error) {
-	db, err := sql.Open("mysql", "root:<yourpassword>.@tcp(127.0.0.1:3306)/")
+	db, err := sql.Open("mysql", "user:<yourpassword>@tcp(127.0.0.1:3306)/")
 	checkErr(err)
 
 	defer db.Close()
@@ -58,7 +58,7 @@ func Read() ([]Task, error) {
 	var tasks []Task
 
 	// Open db.
-	db, err := sql.Open("mysql", "root:Pepperonipizza123.@tcp(127.0.0.1:3306)/")
+	db, err := sql.Open("mysql", "user:<yourpassword>@tcp(127.0.0.1:3306)/")
 	checkErr(err)
 	defer db.Close()
 
@@ -89,7 +89,7 @@ func Read() ([]Task, error) {
 func Update(n Task) error {
 
 	// Connected to MySQL database.
-	db, err := sql.Open("mysql", "root:Pepperonipizza123.@tcp(127.0.0.1:3306)/to_do_list")
+	db, err := sql.Open("mysql", "user:<yourpassword>@tcp(127.0.0.1:3306)/to_do_list")
 	checkErr(err)
 
 	// Close db after use.
@@ -108,7 +108,7 @@ func Update(n Task) error {
 // DELETE selects some task and remove it from the db.
 func Delete(n Task) error {
 	// Connected to MySQL database.
-	db, err := sql.Open("mysql", "root:Pepperonipizza123.@tcp(127.0.0.1:3306)/to_do_list")
+	db, err := sql.Open("mysql", "user:<yourpassword>@tcp(127.0.0.1:3306)/to_do_list")
 	checkErr(err)
 
 	// Close db after use.
@@ -128,7 +128,7 @@ func Delete(n Task) error {
 func main() {
 
 	// Connected to MySQL database.
-	db, err := sql.Open("mysql", "root:<yourpassword>.@tcp(127.0.0.1:3306)/")
+	db, err := sql.Open("mysql", "user:<yourpassword>@tcp(127.0.0.1:3306)/")
 	checkErr(err)
 
 	// Close db after use.
